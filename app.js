@@ -8,12 +8,19 @@ var snake;
 
 (function setup() {
   snake = new Snake(); //get Snake from snake.js
-  snake.draw();  //this.draw (snake.js)
+  fruit = new Fruit();
+  fruit.pickLocation();
+  console.log(fruit.pickLocation());
 
   window.setInterval(()=> {
     ctx.clearRect(0,0,canvas.width, canvas.height);
+    fruit.draw();
     snake.update();
-    snake.draw()
+    snake.draw();
+
+    if(snake.eat(fruit)) {
+      fruit.pickLocation();
+    }
   }, 250);
 }());
 

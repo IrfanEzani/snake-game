@@ -5,7 +5,7 @@ function Snake() {
   this.ySpeed = 0;
 
   this.draw = function() {
-    ctx.fillStyle = "#FFFFFF";
+    ctx.fillStyle = "#FF0000";
     ctx.fillRect(this.x, this.y, scale, scale); //create snake
   }
 
@@ -28,9 +28,7 @@ function Snake() {
     if(this.y < 0) {
       this.y = canvas.height;
     }
-
-} 
-
+}
 
 
   this.changeDirection = function(direction) {
@@ -51,8 +49,13 @@ function Snake() {
         this.xSpeed = scale * 1;
         this.ySpeed = 0;
         break;
-
-
     }
   }
+
+  this.eat = function(fruit) {
+    if (this.x == fruit.x && this.y == fruit.y) {
+      return true
+    }
+  }
+
 }
