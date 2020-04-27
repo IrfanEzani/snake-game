@@ -10,7 +10,6 @@ var snake;
   snake = new Snake(); //get Snake from snake.js
   fruit = new Fruit();
   fruit.pickLocation();
-  console.log(fruit.pickLocation());
 
   window.setInterval(()=> {
     ctx.clearRect(0,0,canvas.width, canvas.height);
@@ -21,7 +20,15 @@ var snake;
     if(snake.eat(fruit)) {
       fruit.pickLocation();
     }
-  }, 250);
+
+    snake.checkCollision();
+    document.querySelector('.score').innerText = snake.total;
+
+
+    document.querySelector('.text').innerText = snake.caption;
+
+
+  }, 100);
 }());
 
 

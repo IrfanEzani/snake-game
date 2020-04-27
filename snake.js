@@ -3,13 +3,27 @@ function Snake() {
   this.y = 0;
   this.xSpeed = scale * 1;
   this.ySpeed = 0;
+  this.total = 0;
+  this.tail = []
+  this.caption = '';
 
   this.draw = function() {
     ctx.fillStyle = "#FF0000";
+
+    for (let i = 0; i < this.tail.length; i++) {
+      ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale); //create snake tail
+    }
+
     ctx.fillRect(this.x, this.y, scale, scale); //create snake
   }
 
   this.update = function () {
+      for (let i = 0; i < this.tail.length -1; i++) {
+        this.tail[i] = this.tail[i + 1]; //shif tail to left
+        }
+
+    this.tail[this.total - 1] = {x : this.x, y : this.y}
+
     this.x += this.xSpeed;
     this.y += this.ySpeed;
 
@@ -54,8 +68,23 @@ function Snake() {
 
   this.eat = function(fruit) {
     if (this.x == fruit.x && this.y == fruit.y) {
+      this.total++;
       return true
     }
   }
+
+  this.checkCollision = function() {
+    for (let i = 0; i < this.tail.length; i++) {
+      if (this.x == this.tail[i].x && this.y == this.tail[i].y) {
+        this.total = 0;
+        this.tail = [];
+        this.caption = "You lost";
+        this.xSpeed = 0;
+        this.ySpeed = 0;
+      }
+    }
+  }
+
+
 
 }
