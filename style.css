@@ -10,12 +10,86 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color : darkblue;
-  font-family: 'Bungee Shade', sans-serif;
+  width: 100vw;
+  overflow: hidden;
+  background: black;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.title {
+  width: 170px;
+  height:50px;
+  border-radius:180px;
+  left:calc(50% - 75px);
+  top:calc(50% - 25px);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  cursor:pointer;
+  line-height:12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title:before {
+  content: '';
+  z-index: 1;
+  position: absolute;
+  width: 30%;
+  height: 10%;
+  top: 14%;
+  left: 35%;
+  filter: blur(10px);
+  opacity: 0.5;
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+}
+
+
+.title:after {
+  content:'SNAKE GAME';
+  text-align:center;
+  line-height:40px;
+  font-size:18px;
+  color:rgba(235,235,235,1);
+  font-family:'Verdana';
+  font-weight:bold;
+  z-index:5;
+  display:block;
+  border-radius:180px;
+  width:95%;
+  height:85%;
+  top:10%;
+  left:4%;
+  background-color:rgb(19, 20, 22);
+}
+
+.display-score {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.display-score h2 {
+  margin-right: 4px;
 }
 
 
 
-canvas {
+#canvas {
 background-color: black;
+border: 1px solid white;
+border-radius: 5px;
+box-shadow: inset 0 0 2px 0px #ffffff;
+z-index : 1000;
+}
+
+.canvas-blur {
+  position: absolute;
+  width: 300px;
+  height: 305px;
+  transform: translate(4px,-4px);
+  filter: blur(10px);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) ;
+  z-index: -1;
 }
